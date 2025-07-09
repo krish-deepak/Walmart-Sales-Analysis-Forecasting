@@ -1,46 +1,44 @@
-# Walmart-Sales-Analysis-Forecasting
 
-Project Objective
-The goal of this project is to analyze the historical sales data of Walmart stores and build a predictive model to forecast weekly sales. The analysis aims to understand the impact of various external factors—such as store type, holidays, and macroeconomic indicators—on store performance, providing actionable insights for inventory management and business strategy.
+# Walmart Black Friday Sales: A Statistical Analysis of Customer Behavior
 
+### 1. Business Problem
+The management team at Walmart aims to understand customer purchasing behavior during the Black Friday event to make better data-driven decisions. The core objective is to statistically analyze and compare the purchase amounts across different demographic segments—specifically **Gender**, **Marital Status**, and **Age**—to tailor marketing and sales strategies effectively.
 
-Key Libraries Used
-Data Manipulation: pandas, numpy
+### 2. Dataset
+The analysis was performed on a transactional dataset from Walmart's Black Friday sales, capturing 550,068 transactions. Key features include `User_ID`, `Gender`, `Age`, `City_Category`, `Marital_Status`, `Product_Category`, and the target variable, `Purchase` amount.
 
-Data Visualization: matplotlib, seaborn
+### 3. Technical Stack
+* **Languages & Libraries:** Python, Pandas, NumPy, Matplotlib, Seaborn
+* **Environment:** Jupyter Notebook
 
-Machine Learning: scikit-learn
+---
+## 4. Analytical Methodology
 
-Methodology & Key Findings
-The project followed a structured workflow, from data integration and cleaning to exploratory analysis and predictive modeling.
+The project was executed in two main phases: a comprehensive Exploratory Data Analysis (EDA) followed by a deep dive using Inferential Statistics to generalize findings from the sample data to the entire customer population.
 
-1. Data Integration & Preprocessing
-Data Merging: The three separate datasets (stores, features, train) were merged into a single, unified DataFrame to create a comprehensive view for analysis.
+### Phase I: Exploratory Data Analysis (EDA)
 
-Data Cleansing: Missing values in key macroeconomic features like CPI and Unemployment were handled using a median-based imputation strategy to maintain data integrity.
+The initial phase involved a thorough investigation of the dataset's characteristics and visible trends.
 
-Feature Transformation: The Date column was converted to a proper datetime format, which was fundamental for all time-based analysis and feature engineering.
+* **Data Profiling:** The dataset was loaded and characterized, confirming its structure and data types. A key finding was the absence of null values, indicating a high-quality source dataset.
+* **Univariate Analysis:** The distribution of key variables was analyzed. It was observed that customers in the **26-35 age group** represent the largest segment of shoppers, and there are more male shoppers than female shoppers in the dataset.
+* **Bivariate Analysis:** The relationship between demographic features and purchase amount was visualized using boxplots and countplots. This visual analysis consistently showed that **men tend to have a higher purchase amount per transaction than women**.
 
-2. Exploratory Data Analysis (EDA)
-The EDA phase focused on uncovering relationships between various features and weekly sales.
+### Phase II: Inferential Statistics & Hypothesis Testing
 
-Store Performance: Analysis revealed a clear hierarchy in store performance. Type 'A' stores consistently generate the highest sales, followed by Type 'B' and 'C', confirming that store size and type are major drivers of revenue.
+To draw robust conclusions about the entire customer population (e.g., 50 million males and 50 million females), the **Central Limit Theorem (CLT)** was applied. This approach allows us to make statistically significant claims rather than relying on visual inspection alone.
 
-Impact of Holidays: Holiday weeks show distinct patterns. While some holidays like Thanksgiving and Christmas lead to significant sales spikes, others result in noticeable dips, providing crucial information for holiday-specific inventory planning.
+* **Confidence Interval Framework:** 95% confidence intervals were constructed for the average purchase amount for different customer segments. The key question was whether the confidence intervals for different groups (e.g., male vs. female) would overlap.
+* **Demographic Segmentation Analysis:** This statistical framework was systematically applied to three key demographic comparisons:
+    1.  **Gender:** The analysis confirmed that the 95% confidence intervals for the average male and female purchase amounts **do not overlap**. This provides statistical evidence that men, on average, spend more than women during Black Friday.
+    2.  **Marital Status:** The spending habits of married vs. unmarried customers were similarly compared to identify any significant differences.
+    3.  **Age:** Customers were grouped into life-stage bins, and the analysis identified the age groups with the highest average spending, with the **26-35 segment** being a key high-value group.
 
-Macroeconomic Correlation: The analysis explored the relationship between sales and macroeconomic indicators. It was observed that factors like CPI (Consumer Price Index) have a tangible correlation with sales figures, indicating that broader economic health influences consumer spending at Walmart.
+---
+## 5. Actionable Recommendations for Walmart
 
-3. Feature Engineering
-To improve model performance, several new features were engineered from the Date column:
+Based on the statistical findings, the following non-technical, data-driven recommendations were proposed:
 
-Temporal Features: Extracted Year, Month, Day, and WeekOfYear to allow the model to capture seasonality and time-based trends in the sales data.
-
-4. Predictive Modeling
-Model Development: A predictive model was developed to forecast Weekly_Sales. Based on your notebook, you experimented with regression models to predict future outcomes based on the prepared features.
-
-Feature Importance: The model identified store size, type, and key temporal features (like month and week) as the most significant predictors of sales.
-
-Model Evaluation: The model's performance was evaluated using standard metrics, demonstrating its capability to explain a significant portion of the variance in sales data. This provides Walmart with a reliable tool for forecasting demand.
-
-Conclusion
-This project successfully demonstrates an end-to-end data analysis workflow. By integrating multiple data sources, performing thoughtful EDA, and building a predictive model, we were able to identify the key factors driving Walmart's sales. The resulting insights and the forecasting model can directly support better business decision-making in areas like inventory management, marketing strategy, and resource allocation.
+* **Target High-Value Demographics:** Launch targeted marketing campaigns and product promotions specifically aimed at **male customers aged 26-35**, as this segment is statistically proven to have the highest purchasing power during the Black Friday event.
+* **Customize Marketing Communications:** Tailor marketing messages based on marital status and age. For example, promote high-value individual items like electronics to unmarried customers, while showcasing family-oriented or household bundle deals to married customers.
+* **Optimize Product Inventory:** Use the insights on which product categories are most popular within the highest-spending demographics to optimize inventory levels, ensuring stock availability of high-demand items and maximizing sales potential.
